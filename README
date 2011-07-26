@@ -1,0 +1,10 @@
+Core UI Framework
+
+The Core UI Framework is a collation of ActionScript 3.0 classes and components related to developing user interfaces and applications.
+
+The design concept and metaphor is inspired by iOS UIKit.
+Dependencies:
+the framework do currently use caurina tweening engine in its transitions but feature plans is to replace this dependencies with my own tweening engine which is currently under development. 
+
+Feature Plans:
+Make most view components customizable with the use of Bitmaps and bitmap sheets.
