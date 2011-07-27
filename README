@@ -1,10 +1,37 @@
-Core UI Framework
+The Core UI Framework
+Core UI is a  collection of MVC based classes and interfaces written in ActionScript 3.0 for developing applications.
 
-The Core UI Framework is a collation of ActionScript 3.0 classes and components related to developing user interfaces and applications.
+The framework provides a basic set of view componenets and controllers that are designed for creating cutting edge rich application for the web and tablets, the framework where designed using a metaphor similar to iOS devices and some syntax are also borrowed from UIKit as the don't exists elsewhere. but the prefix is just for extra mark that they belong to the Core UI framework.
 
-The design concept and metaphor is inspired by iOS UIKit.
+As perfection is my middle name, performance and clean design where a important factor in the development of this framework.
+
+
 Dependencies:
-the framework do currently use caurina tweening engine in its transitions but feature plans is to replace this dependencies with my own tweening engine which is currently under development. 
+* Currently dependent on the caurina tweening engine.
 
 Feature Plans:
-Make most view components customizable with the use of Bitmaps and bitmap sheets.
+* Make most view components customizable with the use of Bitmaps and bitmap sheets.
+* Complete the Core Tween framework to be used as the animation engine.
+* Commit the prototypes of all controls with a default skin and look.
+
+Classes under development:
+UIActivityIndicator	- basic spinning preloader.
+UIAlertView		- alert dialog.
+UIButton		- basic and customizable button.
+UIButtonGroup		- controller for a group toggle buttons.
+UIKnob			- knob control.
+UINavigationBar		- Navigation bar.
+UIPageControl		- Paging control and indicator.
+UIProgressView		- basic preloaded bar.
+UIRating		- rating control, simular to Appstore and itunes.
+UIScroller		- scrollbar component and indicator.
+UIScrollView		- scrollview width bounce, paging, throwing and zooming.
+UISegmentedControl	- button bar.
+UISlider		- basic slider.
+UIStepper		- numeric stepper.
+UISwitch		- on/off toggle, similar to iOS.
+UITabBar		- tab bar.
+UIText			- scrollable text view.
+UITextField		- input textfield for text, password and more.
+UIToolbar		- basic toolbar.
+UICollectionView	- icon/tile list component.
