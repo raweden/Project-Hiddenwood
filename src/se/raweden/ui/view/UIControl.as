@@ -11,24 +11,37 @@ package se.raweden.ui.view
 	import flash.display.DisplayObjectContainer;
 	import flash.geom.Rectangle;
 	
+	import se.raweden.core.core;
+	
+	/**
+	 * A <code>UIControl</code> base class
+	 * 
+	 * @author Raweden
+	 */
 	public class UIControl extends UIView{
 		
-		private var m_enabled:Boolean = true;
+		use namespace core;
 		
-		public function UIControl(parent:DisplayObjectContainer=null, bounds:Rectangle=null){
-			super(parent, bounds);
+		core var m_enabled:Boolean = true;
+		core var m_state:int = -1;
+		
+		public function UIControl(parent:DisplayObjectContainer = null, frame:Rectangle = null){
+			super(parent, frame);
 		}
 		
 		/**
+		 * Indicates the current state of the <code>UIControl/code> instance.
 		 * 
+		 * @default <code>-1</code>
 		 */		
-		public function get state():String{
-			return null;
+		public function get state():int{
+			return m_state;
 		}
 		
 		/**
 		 * Specifies if the <code>UIControl/code> instance is enabled.
-		 * <p>The default value is <code>true</code></p>
+		 * 
+		 * @default <code>true</code>
 		 */
 		public function set enabled(value:Boolean):void{
 			if(value != m_enabled){
@@ -43,6 +56,9 @@ package se.raweden.ui.view
 			return m_enabled;
 		}
 		
+		/**
+		 * Indicates if the <code>UIControl/code> instance is selected.
+		 */
 		public function get selected():Boolean{
 			return false;
 		}
