@@ -20,12 +20,10 @@ package se.raweden.ui.view
 	public class UIWindow extends UIView{
 		
 		/*
-		 * TODO:
-		 * - implement stage like behavior to this class, so the window class manages focus.
-		 * - implement the window as the "first responder" when active (key) so that the controllers can listent to events on the window instance instead of the stage(removing bad habits).
-		 * - provide a way to manage peer windows.
-		 * - automaticly resize the window instances to stage when active (less boilerplate code).
-		 * 
+		 * TODO: implement stage like behavior to this class, so the window class manages focus.
+		 * TODO: implement the window as the "first responder" when active (key) so that the controllers can listent to events on the window instance instead of the stage(removing bad habits).
+		 * TODO: provide a way to manage peer windows.
+		 * TODO: automaticly resize the window instances to stage size when active (less boilerplate code).
 		 */
 		
 		use namespace core;

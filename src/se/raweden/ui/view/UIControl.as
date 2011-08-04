@@ -22,8 +22,9 @@ package se.raweden.ui.view
 		
 		use namespace core;
 		
-		core var m_enabled:Boolean = true;
-		core var m_state:int = -1;
+		private var m_enabled:Boolean = true;
+		private var m_highlighted:Boolean;
+		private var m_selected:Boolean;
 		
 		public function UIControl(parent:DisplayObjectContainer = null, frame:Rectangle = null){
 			super(parent, frame);
@@ -32,10 +33,14 @@ package se.raweden.ui.view
 		/**
 		 * Indicates the current state of the <code>UIControl/code> instance.
 		 * 
-		 * @default <code>-1</code>
+		 * @default <code>UIControlState.Normal</code>
 		 */		
 		public function get state():int{
-			return m_state;
+			var state:int = UIControlState.Normal;
+			if (m_highlighted)	state |= UIControlState.Highlighted;
+			if (!m_enabled)		state |= UIControlState.Disabled;
+			if (m_selected)		state |= UIControlState.Selected;
+			return state;
 		}
 		
 		/**
@@ -49,6 +54,7 @@ package se.raweden.ui.view
 				tabEnabled = value;
 				alpha = value ? 1.0 : 0.75;	
 				m_enabled = value;
+				stateDidChange();
 			}
 		}
 		// indicates if the Controll is currently enabled.
@@ -59,9 +65,36 @@ package se.raweden.ui.view
 		/**
 		 * Indicates if the <code>UIControl/code> instance is selected.
 		 */
-		public function get selected():Boolean{
-			return false;
+		public function set selected(value:Boolean):void{
+			if(value != m_selected){
+				m_selected = value;
+				stateDidChange();
+			}
 		}
+		//
+		public function get selected():Boolean{
+			return m_selected;
+		}
+
+		/**
+		 * 
+		 */
+		public function set highlighted(value:Boolean):void{
+			if(value != m_highlighted){
+				m_highlighted = value;	
+				stateDidChange();
+			}
+		}
+		// returns of the control is currently highighted.
+		public function get highlighted():Boolean{
+			return m_highlighted;
+		}
+		
+		private function stateDidChange():void{
+			this.setNeedsDisplay();
+			this.setNeedsLayout();
+		}
+
 		
 	}
 }
