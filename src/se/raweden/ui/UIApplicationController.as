@@ -15,7 +15,7 @@ package se.raweden.ui
 	 * 
 	 * @author Raweden.
 	 */
-	public interface UIApplicatioController{
+	public interface UIApplicationController{
 		
 		// Responding to Application State Change.
 		
