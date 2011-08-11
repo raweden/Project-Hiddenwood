@@ -1,3 +1,11 @@
+//
+//	UIWorkspace.as
+//	Core UI Framework
+//
+//	Created by Raweden on 2011-05-30
+//	Copyright 2011 Raweden. Some rights reserved.
+//
+
 package se.raweden.ui.desktop
 {
 	import se.raweden.core.core;
@@ -52,11 +60,11 @@ package se.raweden.ui.desktop
 		/**
 		 * 
 		 */
-		public function set pasteboard(value:UIPasteboard):void{
+		public final function set pasteboard(value:UIPasteboard):void{
 			m_pasteboard = value;
 		}
 		// indicates the current pasteboard.
-		public function get pasteboard():UIPasteboard{
+		public final function get pasteboard():UIPasteboard{
 			return m_pasteboard;
 		}
 		

@@ -2,9 +2,10 @@
 //	IOperation.as
 //	Core UI Framework
 //
-//	Created by Jesper Svensson on 2011-07
-//	Copyright 2011 Jesper Svensson. All rights reserved.
+//	Created by Raweden on 2011-07-04
+//	Copyright 2011 Raweden. Some rights reserved.
 //
+
 package se.raweden.ui.managers
 {
 	public interface IOperation{

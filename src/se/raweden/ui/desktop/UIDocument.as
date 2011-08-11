@@ -2,8 +2,8 @@
 //	UIDocument.as
 //	Core UI Framework
 //
-//	Created by Jesper Svensson on 2011-07
-//	Copyright 2011 Jesper Svensson. All rights reserved.
+//	Created by Raweden on 2011-07-03
+//	Copyright 2011 Raweden. Some rights reserved.
 //
 
 package se.raweden.ui.desktop
@@ -15,6 +15,7 @@ package se.raweden.ui.desktop
 	
 	import se.raweden.ui.UIViewController;
 	import se.raweden.ui.managers.UIUndoManager;
+	
 	
 	/**
 	 * The <code>UIDocument</code> class provides a abstract interface for creating document based applications. 
@@ -28,10 +29,10 @@ package se.raweden.ui.desktop
 	 */	
 	public class UIDocument{
 		
-		/* 
-		 * TODO: develop a event class that represents bindable properties so the view controller may process changes.
-		 * TODO: develop a class that represents the reading and writting session with the Core Cloud's FileWrapper class.
-		 */
+		//
+		// TODO: develop a event class that represents bindable properties so the view controller may process changes.
+		// TODO: develop a class that represents the reading and writting session of remote files.
+		//
 		
 		private var m_undoManager:UIUndoManager;
 		
@@ -52,8 +53,10 @@ package se.raweden.ui.desktop
 		 */
 		public function readExternal(input:IDataInput,type:String):Boolean{
 			
-			// In a feature release of the Flash Player you may be able to use some kind of thearding api when decoding the file format,
-			// which enables you to decode formats without the freezing the UI completly.
+			//
+			// In a feature release of the Flash Player you will be able to create a new thread to decode the file.
+			// This avoids the interface to freeze when reading complex formats.
+			//
 			
 			return false;
 		}
@@ -68,9 +71,11 @@ package se.raweden.ui.desktop
 		 */
 		public function writeExternal(output:IDataOutput,type:String):Boolean{
 			
-			// In a feature release of the Flash Player you may be able to use some kind of thearding api when encoding the file format,
-			// which enables you to encode formats without the freezing the UI completly.
-					
+			//
+			// In a feature release of the Flash Player you will be able to create a new thread to decode the file.
+			// This avoids the interface to freeze when writting complex formats.
+			//
+			
 			return false;
 		}
 		

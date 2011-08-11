@@ -2,7 +2,7 @@
 //	UIListEvent.as
 //	Core UI Framework
 //
-//	Created by Jesper Svensson on 2011-03-07
+//	Created by Jesper Svensson on 2011-04-30
 //	Copyright 2011 Jesper Svensson. All rights reserved.
 //
 

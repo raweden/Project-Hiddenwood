@@ -2,8 +2,8 @@
 //	UIControl.as
 //	Core UI Framework
 //
-//	Created by Jesper Svensson on 2011-07
-//	Copyright 2011 Jesper Svensson. All rights reserved.
+//	Created by Raweden on 2011-07-01
+//	Copyright 2011 Raweden. Some rights reserved.
 //
 
 package se.raweden.ui.view
@@ -26,6 +26,9 @@ package se.raweden.ui.view
 		private var m_highlighted:Boolean;
 		private var m_selected:Boolean;
 		
+		/**
+		 * Constructor.
+		 */
 		public function UIControl(parent:DisplayObjectContainer = null, frame:Rectangle = null){
 			super(parent, frame);
 		}
