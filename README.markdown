@@ -9,10 +9,12 @@ Other Key features
 ------------------
 * Dragging data between view's and application using UIDraggingSession (se.raweden.ui.desktop.).
 
-Dependencies:
+Dependencies
+------------
 * Currently dependent on the caurina tweening engine.
 
-Feature Plans:
+Feature Plans
+-------------
 * Make most view components customizable with the use of Bitmaps and bitmap sheets.
 * Complete the Core Tween framework to be used as the animation engine.
 * Commit the ui prototypes of all controls with a default skin and look.
