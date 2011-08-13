@@ -21,28 +21,28 @@ Another key features is that core UI is built upon delegation or callback method
 
 ### Classes under development
 
-view package (se.raweden.ui.view)
-> UIActivityIndicator	- basic spinning preloader.
-> UIAlertView		- alert dialog.
-> UIButton		- basic and customizable button.
-> UIButtonGroup		- controller for a group toggle buttons.
-> UIKnob			- knob control.
-> UINavigationBar		- Navigation bar.
-> UIPageControl		- Paging control and indicator.
-> UIProgressView		- basic preloaded bar (available as alpha release, final implementation will be developed in near feature).
-> UIRating		- rating control, simular to Appstore and itunes.
-> UIScroller		- scrollbar component and indicator.
-> UIScrollView		- scrollview width bounce, paging, throwing and zooming.
-> UISegmentedControl	- button bar.
-> UISlider		- basic slider.
-> UIStepper		- numeric stepper.
-> UISwitch		- on/off toggle, similar to iOS.
-> UITabBar		- tab bar.
-> UIText			- scrollable text view.
-> UITextField		- input textfield for text, password and more.
-> UIToolbar		- basic toolbar.
-> UICollectionView	- icon/tile list component.
+* view package (se.raweden.ui.view)
+	* UIActivityIndicator	- basic spinning preloader.
+	* UIAlertView		- alert dialog.
+	* UIButton		- basic and customizable button.
+	* UIButtonGroup		- controller for a group toggle buttons.
+	* UIKnob			- knob control.
+	* UINavigationBar		- Navigation bar.
+	* UIPageControl		- Paging control and indicator.
+	* UIProgressView		- basic preloaded bar (available as alpha release, final implementation will be developed in near feature).
+	* UIRating		- rating control, simular to Appstore and itunes.
+	* UIScroller		- scrollbar component and indicator.
+	* UIScrollView		- scrollview width bounce, paging, throwing and zooming.
+	* UISegmentedControl	- button bar.
+	* UISlider		- basic slider.
+	* UIStepper		- numeric stepper.
+	* UISwitch		- on/off toggle, similar to iOS.
+	* UITabBar		- tab bar.
+	* UIText			- scrollable text view.
+	* UITextField		- input textfield for text, password and more.
+	* UIToolbar		- basic toolbar.
+	* UICollectionView	- icon/tile list component.
 
-desktop package (se.raweden.ui.desktop)
-> UIDraggingSession	- api for dragging data between view's and application represented by images, (available as alpha as this is a part of UIView).
-> UIPasteboard		- data holder for dragging,copy and paste internally between and in app, needs to be rebuilt to integrate with the flash own Clipboard api.
+* desktop package (se.raweden.ui.desktop)
+	* UIDraggingSession	- api for dragging data between view's and application represented by images, (available as alpha as this is a part of UIView).
+	* UIPasteboard		- data holder for dragging,copy and paste internally between and in app, needs to be rebuilt to integrate with the flash own Clipboard api.
