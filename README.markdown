@@ -5,7 +5,8 @@ One of the key concepts of the framework is that a application developed on top 
 
 Another key features is that core UI is built upon delegation or callback methods acting as delegation, which supports greater flexibility than the frameworks currently available to the flash platform. UICollectionView (a kind of tile list) for example is using a callback method which provides the cell render when, the cell is about to be visible in the list rather than using a universal model (ArrayCollection) used by many flex components. Using this approach a custom cell render could be provided easily and the list is no longer bound to certain data model.
 
-Other Key features:
+Other Key features
+------------------
 * Dragging data between view's and application using UIDraggingSession (se.raweden.ui.desktop.).
 
 Dependencies:
@@ -16,7 +17,8 @@ Feature Plans:
 * Complete the Core Tween framework to be used as the animation engine.
 * Commit the ui prototypes of all controls with a default skin and look.
 
-Classes under development:
+Classes under development
+-------------------------
 
 	- view package (se.raweden.ui.view)
 UIActivityIndicator	- basic spinning preloader.
