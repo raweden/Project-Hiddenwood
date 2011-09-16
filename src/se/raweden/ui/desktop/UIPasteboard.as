@@ -1,11 +1,3 @@
-//
-//	UIPasteboard.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-05-04
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.desktop
 {
 	/**
@@ -20,6 +12,7 @@ package se.raweden.ui.desktop
 	 * for special cases when your for example if you have raw sound data you can add an MP3 format handler, then
 	 * the MP3 conversion will only be done if the MP3 data is requested.</p>
 	 * 
+	 * @copyright Copyright 2011 Raweden. All rights reserved.
 	 * @author Raweden
 	 */	
 	public final class UIPasteboard{
@@ -36,25 +29,13 @@ package se.raweden.ui.desktop
 
 		}
 		
-// // // // // // // // // // // // // 
-// DRAGSOURCE PARAMTERS
-		
-		/**
-		 * Contains the formats of the dag data, as an Array of Strings. set this property using the <code>addData()</code> or <code>addHandler()</code> methods. The default value depends on data added to the DragSource object.
-		 */
-		public function get formats():Array{
-			var array:Array = new Array();
-			for(var p:String in _data){
-				array.push(p);
-			}
-			return(array);
-		}
-		
-// // // // // // // // // // // // // 
-// DRAGSOURCE METHODS
+		//------------------------------------
+		// Managing Data and Handlers.
+		//------------------------------------
 		
 		/**
 		 * Adds data and corresponding format String to the drag source.
+		 * 
 		 * @param data Object that specifies the drag data. This can be any object.
 		 * @param format String that specifies a label that describes the format for this data.
 		 */
@@ -64,6 +45,7 @@ package se.raweden.ui.desktop
 		
 		/**
 		 * Adds a handler that is called when data for the specified format is requested.
+		 * 
 		 * @param data Function that specifies the handler called to request the data, This function mist return the data in the specified format.
 		 * @param format String that specifies a label that describes the format for this data.
 		 */
@@ -74,7 +56,9 @@ package se.raweden.ui.desktop
 		/**
 		 * <p>Retrives the data for the specified format.</p>
 		 * <p>If the data was added with the <code>addData()</code> method, it is returned directly.
-		 * If the data was added with the <code>addHandler()</code> method,the handler function is called to return the data.</p>
+		 * If the data was added with the <code>addHandler()</code> method,the handler function is 
+		 * called to return the data.</p>
+		 * 
 		 * @param format String that specifies a label that describes the format for data to return. This string can be a custom value if you are creating a custom drop target with the <code>addData()</code> method.
 		 * @return An Object containing the data in the requested format. If you drag multiple items, the returned value is an Array, if the format wasn't found the default value is <code>null</code>.
 		 */
@@ -90,14 +74,39 @@ package se.raweden.ui.desktop
 			}
 			return(data);
 		}
+		
+		//------------------------------------
+		// Determine Formats.
+		//------------------------------------
 
 		/**
-		 * Returns <code>true</code> if the the data source contains the requeted format; otherwise, its returns <code>false</code>.
+		 * Returns <code>true</code> if the the data source contains the requeted format;
+		 * otherwise, its returns <code>false</code>.
+		 * 
 		 * @param format String that specifies a label that describes the format for the data.
 		 * @return <code>true</code> if the data source contains the requested format.
 		 */
 		public function hasFormat(format:String):Boolean{
 			return(_data.hasOwnProperty(format))	
 		}		
+		
+		
+		/**
+		 * Contains the formats of the dag data, as an Array of Strings.
+		 * set this property using the <code>addData()</code> or <code>addHandler()</code> methods.
+		 * The default value depends on data added to the DragSource object.
+		 */
+		public function get formats():Array{
+			var array:Array = new Array();
+			for(var p:String in _data){
+				array.push(p);
+			}
+			return(array);
+		}
+		
+		//------------------------------------
+		// Getting and Setting Formats.
+		//------------------------------------
+		
 	}
 }
