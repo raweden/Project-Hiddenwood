@@ -1,11 +1,12 @@
 
 # Core UI a ActionScript 3.0 Framework
 
-**Core UI** is not yet another UI framework. It's a collection of classes which focus on User Experience and advanced web applications.  
+**Core UI** is a User Interface framework written in pure ActionScript 3. Core UI is a collection of classes which focus on User Experience and advanced web applications.  
+
 The collection contains a basic set of view's and controls and also provides a environment in which a application can work as stand-alone or together with others; for example in a modular multi-tasking platform [on which a wiki exists on the subject here](https://github.com/raweden/Core-UI/wiki/Multi-tasking-and-multi-application-platform).  
 The core of the framework is developed to promote **MVC** architecture and is heavily based on delegation and interfaces and is therefor more flexible than other ActionScript frameworks.
 
-This framework is not a port of iOS's UIKit, but *may* share some features.
+The Flash Player 10.1 runtime is required for running application written with **Core UI**, and as it's pure code it do works with any IDE of your choice.
 
 ### Core Classes
 
@@ -13,7 +14,7 @@ This framework is not a port of iOS's UIKit, but *may* share some features.
 The `Core UI` provides a basic set of views and components. All views inherits from the `UIView` class, which provides a base for managing content displayed on screen, to ensure minimal performance usage a special but simple drawing cycle is implemented. Among with many other classes in the Core UI you find `UIScrollView` which is a advanced view for scrolling and zooming content. These is some of the highlights of the Core UI framework.
 
 #### Drag and Drop
-The `UIView` is integrated with `UIDraggingSession` which together with `UIPasteboard` provides a interface for dragging data and items internally between views, modules and applications. These classes focuses on making  drag 'n drop a smooth user experience with features like inline destination preview, feedback indicators, easing and animation not only for slide back to source if drop where rejected by the destination.
+The `UIView` is integrated with `UIDragging` which together with `UIPasteboard` provides a interface for dragging data and items internally between views, modules and applications. These classes focuses on making  drag 'n drop a smooth user experience with features like inline destination preview, feedback indicators, easing and animation not only for slide back to source if drop where rejected by the destination.
 
 #### Documents
 The `Core UI` provides classes for developing document based applications, the `UIDocument` which is base to all document's data model from which you should subclass for fit your document's specifications. Together with `UIUndoManager` provides as a default property of `UIDocument` undo and redo features can easily be provided. [Learn more about Document based applications](https://github.com/raweden/Core-UI/wiki/Document-Based-Application)
@@ -37,7 +38,7 @@ The `Core UI` provides classes for developing document based applications, the `
 	* `UIRating`			- rating control, simular to Appstore and itunes.
 	* `UIScroller`		- scrollbar component and indicator.
 	* `UIScrollView`		- scrollview width bounce, paging, throwing and zooming.
-	* `UISegmentedControl`	- button bar.
+	* `UISegmentedControl`	- button bar, inspired from iOS.
 	* `UISlider`			- basic slider.
 	* `UIStepper`			- numeric stepper.
 	* `UISwitch`			- on/off toggle, similar to iOS.
