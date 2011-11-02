@@ -20,33 +20,32 @@ The `UIView` is integrated with `UIDragging` which together with `UIPasteboard` 
 The `Core UI` provides classes for developing document based applications, the `UIDocument` which is base to all document's data model from which you should subclass for fit your document's specifications. Together with `UIUndoManager` provides as a default property of `UIDocument` undo and redo features can easily be provided. [Learn more about Document based applications](https://github.com/raweden/Core-UI/wiki/Document-Based-Application)
 
 ### Future Directions
-* Add support for customization with use of `BitmapData` and `UIImage` with Scale9.
-* Replace `Caurina` with `Core Tween` a self developed animation engine.
-* Add support for multiple instances of the same `type-identifier` in `UIPasteboard`.
+* Add support for customization with use of `BitmapData` and `UIImage` with Scale9 as skin for almost all UI components.
+* Replace `Caurina` with `Core Tween` a animation engine developed internally.
+* improve the current `UIPasteboard` api with better implementation of support for multiple items represented by different formats/types.
 * Integrate `UIDragging` with a likely future HTML5 like api for dragging files into flash runtime.
 
 ### Classes under Development
 
-* **view package** `se.raweden.ui.view`
-	* `UIActivityIndicator`	- basic spinning preloader.
-	* `UIAlertView`		- alert dialog.
-	* `UIButton`			- basic and customizable button.
-	* `UIButtonGroup`		- controller for a group toggle buttons.
-	* `UINavigationBar`	- Navigation bar.
-	* `UIPageControl`		- Paging control and indicator.
-	* `UIProgressView`		- basic preloaded bar 
-	* `UIRating`			- rating control, simular to Appstore and itunes.
-	* `UIScroller`		- scrollbar component and indicator.
-	* `UIScrollView`		- scrollview width bounce, paging, throwing and zooming.
-	* `UISegmentedControl`	- button bar, inspired from iOS.
-	* `UISlider`			- basic slider.
-	* `UIStepper`			- numeric stepper.
-	* `UISwitch`			- on/off toggle, similar to iOS.
-	* `UITabBar`			- tab bar.
-	* `UIText`			- scrollable text view.
-	* `UITextField`		- input textfield for text, password and more.
-	* `UIToolbar`			- basic toolbar.
-	* `UICollectionView`	- icon/tile list component.
+* `UIActivityIndicator`	- basic spinning preloader.
+* `UIAlertView`		- alert dialog.
+* `UIButton`			- basic and customizable button.
+* `UIButtonGroup`		- controller for a group toggle buttons.
+* `UINavigationBar`	- Navigation bar.
+* `UIPageControl`		- Paging control and indicator.
+* `UIProgressView`		- basic preloaded bar 
+* `UIRating`			- rating control, simular to Appstore and itunes.
+* `UIScroller`		- scrollbar component and indicator.
+* `UIScrollView`		- scrollview width bounce, paging, throwing and zooming.
+* `UISegmentedControl`	- button bar, inspired from iOS.
+* `UISlider`			- basic slider.
+* `UIStepper`			- numeric stepper.
+* `UISwitch`			- on/off toggle, similar to iOS.
+* `UITabBar`			- tab bar.
+* `UIText`			- scrollable text view.
+* `UITextField`		- input textfield for text, password and more.
+* `UIToolbar`			- basic toolbar.
+* `UICollectionView`	- icon/tile list component.
 
 ### Dependencies
 
