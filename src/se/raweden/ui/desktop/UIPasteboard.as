@@ -21,10 +21,9 @@ package se.raweden.ui.desktop
 	 */	
 	public final class UIPasteboard{
 		
-		private var m_data:Array;
-		private var m_type:Array;
-		private var m_types:Array;
-		public var name:String;
+		private var m_data:Array;	// Contains data or callback and the type identifier is type array.
+		private var m_type:Array;	// Contains the type identifier for the data at the same index.
+		private var m_types:Array;	// Contains all uniqe types identifier in this pasteboard.
 		
 		//
 		// TOOD: add better handling of multible items represented in diffrent formats.
@@ -49,7 +48,7 @@ package se.raweden.ui.desktop
 		 * Returns a <code>Boolean</code> value that determine whether this pasteboard contains one or
 		 * more instances of the format type of the <code>format</code> argument.
 		 * 
-		 * @param format A <code>String</code>that identifies the format. Typically the Uniform Type Identifier.
+		 * @param format A <code>String</code> that identifies the format. Typically the Uniform Type Identifier.
 		 * @return <code>true</code> if the pasteboard contains the format, otherwise <code>false</code>
 		 */
 		public final function hasFormat(format:String):Boolean{
@@ -64,7 +63,7 @@ package se.raweden.ui.desktop
 		}
 		
 		/**
-		 * Returns the number of items in this pasteboard.
+		 * Determine the number of items in this pasteboard.
 		 */
 		public final function get length():int{
 			return -1;
@@ -92,7 +91,7 @@ package se.raweden.ui.desktop
 		/**
 		 * Adds a handler that is called when data for the specified format is requested.
 		 * 
-		 * @param data Function that specifies the handler called to request the data, This function mist return the data in the specified format.
+		 * @param callback Function that specifies the handler called to request the data, This function mist return the data in the specified format.
 		 * @param format String that specifies a label that describes the format for this data. Typically the UTI.
 		 */
 		public final function addHandler(callback:Function, format:String):void{
@@ -152,12 +151,19 @@ package se.raweden.ui.desktop
 		}
 		
 		/**
-		 * Deletes references to the data and providers in this <code>UIPasteboard</code> object.
+		 * Clears all items and references to the data and providers in this <code>UIPasteboard</code> object.
 		 */
-		public function clear():void{
+		public final function clear():void{
 			m_data.length  = 0;
 			m_type.length  = 0;
 			m_types.length = 0;
+		}
+		
+		/**
+		 * 
+		 */
+		public final function clone():UIPasteboard{
+			return null;
 		}
 		
 		//------------------------------------
@@ -167,42 +173,42 @@ package se.raweden.ui.desktop
 		/**
 		 * Returns the first string in this pasteboard or <code>null</code> if no string where found.
 		 */
-		public function get string():String{
+		public final function get string():String{
 			return data("public.text") as String;
 		}		
 		
 		/**
 		 * Returns a Array of all string in this pasteboard or <code>null</code> if no string(s) where found.
 		 */
-		public function get strings():Array{
+		public final function get strings():Array{
 			return multiData("public.text");
 		}
 		
 		/**
 		 * Returns the first image in this pasteboard or <code>null</code> if no image where found.
 		 */
-		public function get image():BitmapData{
+		public final function get image():BitmapData{
 			return data("public.image") as BitmapData;
 		}
 		
 		/**
 		 * Returns a Array containing all images in this pasteboard or <code>null</code> if no image(s) where found.
 		 */
-		public function get images():Array{
+		public final function get images():Array{
 			return multiData("public.image");
 		}
 		
 		/**
 		 * Returns the first url in this pasteboard or <code>null</code> if no url where found.
 		 */
-		public function get url():String{
+		public final function get url():String{
 			return data("public.url") as String;
 		}
 		
 		/**
 		 * Returns a Array of all urls in this pasteboard or <code>null</code> if no url(s) where found.
 		 */
-		public function get urls():Array{
+		public final function get urls():Array{
 			return multiData("public.url");
 		}
 		

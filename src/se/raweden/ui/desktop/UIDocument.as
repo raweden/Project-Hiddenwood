@@ -1,35 +1,28 @@
-//
-//	UIDocument.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-03
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.desktop
 {
 	import flash.printing.PrintJob;
-	import flash.utils.ByteArray;
 	import flash.utils.IDataInput;
 	import flash.utils.IDataOutput;
 	
 	import se.raweden.ui.UIViewController;
 	import se.raweden.ui.managers.UIUndoManager;
-	
+	import se.raweden.utils.IExternalizable;
 	
 	/**
-	 * The <code>UIDocument</code> class provides a abstract interface for creating document based applications. 
+	 * A <code>UIDocument</code> object provides a base class for managing the data of documents.
 	 * 
-	 * <p>Objects and properties that can internally represent data displayed in a view 
-	 * and can be read from and written to file should be implemented in your subclass of <code>UIDocument</code>.
-	 * A <code>UIDocument</code> instance should associated with a <code>UIViewController</code> instances
-	 * that manages the view where the document is represented visualy./p>
+	 * <p>In the Model-View-Controller design pattern, a <code>UIDocument</code> object is a model 
+	 * object or a model-controller object, it manages the data related to a document.
+	 * A <code>UIDocument</code> is typically associated with a view controller that manges the 
+	 * view presenting the document's data.</p>
 	 * 
-	 * TODO: add a complete list of method and properties that should be overriden when subclassing UIDocument.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * @author Raweden
 	 */	
-	public class UIDocument{
+	public class UIDocument implements IExternalizable{
 		
 		//
+		// TODO: add a complete list of method and properties that should be overriden when subclassing UIDocument.
 		// TODO: develop a event class that represents bindable properties so the view controller may process changes.
 		// TODO: develop a class that represents the reading and writting session of remote files.
 		//
@@ -37,11 +30,51 @@ package se.raweden.ui.desktop
 		private var m_undoManager:UIUndoManager;
 		
 		public function UIDocument(){
-			
+		
 		}
 		
 		//------------------------------------
-		// Reading and Writting Document Data
+		// Object Attributes.
+		//------------------------------------
+		
+		/**
+		 * Determine the Mime type of the document format.
+		 * 
+		 * @default <code>"application/octet-stream"</code>
+		 */
+		public function get contentType():String{
+			return "application/octet-stream";
+		}
+		
+		/**
+		 * 
+		 * 
+		 * @default <code>null</code>
+		 */
+		public function get localizedName():String{
+			return null;
+		}
+		
+		/**
+		 * Indicates the data format that this <code>UIDocument</code> is encoded to.
+		 * 
+		 * @default <code>null</code>
+		 */
+		public function get savedType():String{
+			return null;
+		}
+		
+		/**
+		 * 
+		 * 
+		 * @default <code>null</code>
+		 */
+		public function get attributes():Object{
+			return null;
+		}
+		
+		//------------------------------------
+		// Reading Document Data
 		//------------------------------------
 		
 		/**
@@ -61,13 +94,16 @@ package se.raweden.ui.desktop
 			return false;
 		}
 		
+		//------------------------------------
+		// Writting Document Data
+		//------------------------------------
+		
 		/**
 		 * Writes the documents binary represtentation to a output stream.
 		 * 
-		 * @param output 
-		 * @param type
+		 * @param output The output interface for the document to write it's binary representation.
+		 * @param type The format of the output format, by default the file extention.
 		 * @return A Boolean value indicating if the document where successfully written to the stream.
-		 * 
 		 */
 		public function writeExternal(output:IDataOutput,type:String):Boolean{
 			
@@ -108,18 +144,25 @@ package se.raweden.ui.desktop
 		//------------------------------------
 		
 		/**
+		 * 
+		 */
+		public final function get documentState():String{
+			return null;
+		}
+		
+		/**
 		 * Indicates if the Document have been edited since it where last saved.
 		 * 
 		 * @default <code>false</code>
 		 */
-		public function get isDocumentEdited():Boolean{
+		public function get isEdited():Boolean{
 			return false;
 		}
 		
 		//------------------------------------
-		// Creating and Managing Window Controllers
+		// Managing Related View and Controllers
 		//------------------------------------
-				
+			
 		/**
 		 * Returns the Panel Controller associated with this document instance.
 		 * 
@@ -147,7 +190,7 @@ package se.raweden.ui.desktop
 		/**
 		 * Returns the printJob representing the document.
 		 * 
-		 * @default <code>null</code>
+		 * @return The printJob to be printed by the system. The Default implementation returns <code>null</code>.
 		 */
 		public function print():PrintJob{
 			// generate the print as the this method is invoked.
@@ -156,3 +199,4 @@ package se.raweden.ui.desktop
 		
 	}
 }
+

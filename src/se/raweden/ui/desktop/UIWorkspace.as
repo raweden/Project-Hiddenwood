@@ -1,19 +1,13 @@
-//
-//	UIWorkspace.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-05-30
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.desktop
 {
 	import se.raweden.core.core;
-	import se.raweden.ui.ILocalController;
+	import se.raweden.ui.utils.ILocalController;
 
 	/**
 	 * The <code>WorkSpace</code> class...
 	 * 
+	 * <p>copyright Copyright 2011 Raweden. All rights reserved.</p>
+	 * @author Raweden
 	 */
 	public final class UIWorkspace{
 		
@@ -42,13 +36,17 @@ package se.raweden.ui.desktop
 		private var m_documents:Array;			// contains all documents type regiesterd.
 		private var m_documentsDefaults:Object;	// contains the default applicaiton for documents types.
 		
+		private var m_delegate:IWorkspaceDelegate;
 		private var m_pasteboard:UIPasteboard;
 		
-		public function UIWorkspace(localControllers:Array,documents:Array,documentsDefaults:Object){
+		public function UIWorkspace(delegate:IWorkspaceDelegate){ //localControllers:Array,documents:Array,documentsDefaults:Object){
+			m_delegate = delegate;
+			/*
 			m_localControllers = localControllers;
 			m_documents = documents;
 			m_documentsDefaults = documentsDefaults;
 			// setting the default instance if not set.
+			*/
 			if(!m_sharedWorkspace)
 				m_sharedWorkspace = this;
 		}
@@ -69,35 +67,33 @@ package se.raweden.ui.desktop
 		}
 		
 		//------------------------------------
-		// Getting the Default Application for File Types
+		// Default Application for Types
 		//------------------------------------
 		
 		/**
 		 * 
 		 * @param type The filetype extention.
+		 * @return 
 		 */
 		public final function defaultApplicationFor(type:String):ILocalController{
-			return m_documentsDefaults ? m_documentsDefaults[type] as ILocalController : null;
+			return m_delegate.defaultApplicationFor(type);
 		}
-		
+				
 		/**
-		 * 
-		 */
-		public final function get documents():Array{
-			return m_documents.concat();
-		}
-		
-		/**
+		 * Returns a Array containing all <code>ILocalController</code> registed for the type.
 		 * 
 		 * @param type The filetype extention.
+		 * @return
 		 */
 		public final function applicationsFor(type:String):Array{
-			var len:int = m_documents.length;
-			var apps:Array = new Array()
-			for(var i:int = 0;i<len;i++){
-				
-			}
-			return apps.length > 0 ? apps : null;
+			return m_delegate.applicationsFor(type);
+		}
+		
+		/**
+		 * Returns a Array containing all Type Identifiers registerd on the platform.
+		 */
+		public final function get documents():Array{
+			return m_delegate.documents;
 		}
 		
 	}

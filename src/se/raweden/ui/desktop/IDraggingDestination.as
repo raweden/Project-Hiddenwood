@@ -32,15 +32,26 @@ package se.raweden.ui.desktop
 	 * The <code>IDraggingDestination</code> is the abstract <code>interface</code> that 
 	 * any <code>UIView</code> subclass must implmenent to resive and handle drag-and-drop events.
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
 	 * @author Raweden
 	 */
 	public interface IDraggingDestination extends IEventDispatcher{
 		
 		/**
+		 * Determine whether the destionation accepts drop from the session.
 		 * 
+		 * @see UIDragging
 		 */
 		function acceptsDrop(session:UIDragging):Boolean;
+		
+		/**
+		 * 
+		 * @param  session
+		 * @return 
+		 * 
+		 * @see UIDragging
+		 */
+		function updateDraggingItems(session:UIDragging):Object;
 				
 	}
 }
