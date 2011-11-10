@@ -1,9 +1,9 @@
 
-# Core UI a ActionScript 3.0 Framework
+# Core UI 
 
-**Core UI** is a User Interface framework written in pure ActionScript 3. Core UI is a collection of classes which focus on User Experience and advanced web applications.  
+**Core UI is a User Interface framework written in pure  actionScript 3,** the framework provides a set of classes which focus on User Experience and advanced web applications.  
 
-The collection contains a basic set of view's and controls and also provides a environment in which a application can work as stand-alone or together with others; for example in a modular multi-tasking platform [on which a wiki exists on the subject here](https://github.com/raweden/Core-UI/wiki/Multi-tasking-and-multi-application-platform).  
+The set contains a basic set of view's and controls and also provides a environment in which a application can work as stand-alone or together with others; for example in a modular multi-tasking platform [on which a wiki exists on the subject here](https://github.com/raweden/Core-UI/wiki/Multi-tasking-and-multi-application-platform).  
 The core of the framework is developed to promote **MVC** architecture and is heavily based on delegation and interfaces and is therefor more flexible than other ActionScript frameworks.
 
 The Flash Player 10.1 runtime is required for running application written with **Core UI**, and as it's pure code it do works with any IDE of your choice.
