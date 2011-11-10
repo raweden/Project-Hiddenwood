@@ -15,6 +15,8 @@ package se.raweden.ui.view
 	 * @tag<p>You may notice that by default there is no hovering state for a control,
 	 * it's not all platforms supports hovering a hovering state and in a real world
 	 * methapore hovering would not apper.</p>
+	 * 
+	 * @author Raweden
 	 */
 	public class UIControlState{
 		

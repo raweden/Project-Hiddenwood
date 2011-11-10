@@ -16,11 +16,16 @@ package se.raweden.ui.view
 	/**
 	 * A <code>UIControl</code> base class
 	 * 
+	 * @copyright Copyright 2011 Raweden. All rights reserved.
 	 * @author Raweden
 	 */
 	public class UIControl extends UIView{
 		
 		use namespace core;
+		
+		//
+		// TODO: write better documentation for this class.
+		//
 		
 		private var m_enabled:Boolean = true;
 		private var m_highlighted:Boolean;
@@ -47,7 +52,7 @@ package se.raweden.ui.view
 		}
 		
 		/**
-		 * Specifies if the <code>UIControl/code> instance is enabled.
+		 * A Boolean value that determine whether this <code>UIControl</code> instance is enabled.
 		 * 
 		 * @default <code>true</code>
 		 */
@@ -66,7 +71,7 @@ package se.raweden.ui.view
 		}
 		
 		/**
-		 * Indicates if the <code>UIControl/code> instance is selected.
+		 * A Boolean value that determien whether this <code>UIControl/code> instance is selected.
 		 */
 		public function set selected(value:Boolean):void{
 			if(value != m_selected){
@@ -80,7 +85,7 @@ package se.raweden.ui.view
 		}
 
 		/**
-		 * 
+		 * A Boolean value that determine whether this <code>UIControl/code> instance is highlighted.
 		 */
 		public function set highlighted(value:Boolean):void{
 			if(value != m_highlighted){
@@ -93,6 +98,9 @@ package se.raweden.ui.view
 			return m_highlighted;
 		}
 		
+		/**
+		 * This method is invoked internaly when the state changes.
+		 */
 		private function stateDidChange():void{
 			this.setNeedsDisplay();
 			this.setNeedsLayout();
