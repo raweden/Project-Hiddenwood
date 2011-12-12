@@ -1,9 +1,12 @@
 package se.raweden.ui.desktop
 {
 	/**
-	 * Constants that is to be used with the <code>UIDragging.formation</code> property.
+	 * The <code>UIDraggingFormation</code> contains contants to be
+	 * used with the UIDragging's <code>formation</code> property.
 	 * 
-	 * @see UIDragging.formation
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 *
+	 * @author Raweden.
 	 */
 	public class UIDraggingFormation{
 		

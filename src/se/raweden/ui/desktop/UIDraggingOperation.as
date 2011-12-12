@@ -1,7 +1,10 @@
 package se.raweden.ui.desktop
 {
 	/**
-	 * Constants that is to be used with the <code>UIDragging.operation</code> property.
+	 * The <code>UIDraggingOperation</code> contains constants to be 
+	 * used with the <code>UIDragging.operation</code> property.
+	 * 
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
 	 * 
 	 * @see UIDragging.operation
 	 */
