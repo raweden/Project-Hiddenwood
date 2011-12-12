@@ -1,32 +1,18 @@
-//
-//	UIWindow.as
-//	Core UI Framework
-//
-//	Created by Jesper Svensson on 2011-08-05
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.view
 {
-	import flash.display.DisplayObject;
 	import flash.display.InteractiveObject;
-	import flash.events.Event;
 	import flash.events.FocusEvent;
-	import flash.geom.Rectangle;
 	
-	import se.raweden.core.core;
 	import se.raweden.ui.UIApplication;
 	import se.raweden.ui.UIViewController;
 	
 	/**
 	 * A <code>UIWindow</code> manages and coordinate the window of an application displayed on the screen.
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
 	 * @author Raweden
 	 */
 	public class UIWindow extends UIView{
-				
-		use namespace core;
 		
 		//
 		// TODO: implement stage like behavior to this class, so the window class manages focus.
