@@ -1,19 +1,22 @@
-package se.raweden.ui.managers
+package se.raweden.managers
 {
+	import se.raweden.managers.IOperation;
+
 	/**
 	 * A <code>UIUndoManager</code> object is a general purpose undo and redo manager. 
 	 * 
 	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
-	public class UIUndoManager{
+	public class UndoManager{
 		
 		private var undoStack:Array;
 		private var redoStack:Array;
 		
 		private var m_levels:int = 25;
 		
-		public function UIUndoManager(){
+		public function UndoManager(){
 			undoStack = new Array();
 			redoStack = new Array();
 		}
@@ -37,14 +40,14 @@ package se.raweden.ui.managers
 		}
 		
 		/**
-		 * A <code>Boolean</code> value determine whether there is a operation that can be redone.
+		 * A <code>Boolean</code> value that determine whether there is a operation that can be redone.
 		 */
 		public function get canRedo():Boolean{
 			return redoStack.length > 0;
 		}
 		
 		/**
-		 * A <code>Boolean</code> value determine whether there is a operation that can be undone.
+		 * A <code>Boolean</code> value that determine whether there is a operation that can be undone.
 		 */
 		public function get canUndo():Boolean{
 			return undoStack.length > 0;

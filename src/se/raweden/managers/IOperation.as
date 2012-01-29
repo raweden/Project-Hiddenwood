@@ -1,8 +1,9 @@
-package se.raweden.ui.managers
+package se.raweden.managers
 {
 	/**
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public interface IOperation{
