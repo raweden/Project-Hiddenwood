@@ -1,4 +1,4 @@
-package se.raweden.ui.desktop
+package se.raweden.desktop
 {
 	/**
 	 * The <code>UIDraggingFormation</code> contains contants to be

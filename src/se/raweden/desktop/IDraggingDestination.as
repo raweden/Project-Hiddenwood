@@ -1,4 +1,4 @@
-package se.raweden.ui.desktop
+package se.raweden.desktop
 {
 	import flash.events.IEventDispatcher;
 	
@@ -27,18 +27,22 @@ package se.raweden.ui.desktop
 	 * Dispatched by the <code>UIDragging</code> when the dragging ends.
 	 */
 	[Event(name="dragEnd", type="se.raweden.ui.events.UIDragEvent")]
-
-	/**
-	 * The <code>IDraggingDestination</code> is the abstract <code>interface</code> that 
-	 * any <code>UIView</code> subclass must implmenent to resive and handle drag-and-drop events.
+	
+	/** 
+	 * The <code>IDraggingDestination</code> interface declares method that any <code>DisplayObject</code>
+	 * must implement to be a possible dragging destination to the <code>UIDragging</code> api.
 	 * 
 	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public interface IDraggingDestination extends IEventDispatcher{
 		
 		/**
 		 * Determine whether the destionation accepts drop from the session.
+		 * 
+		 * @param session The current <code>UIDragging</code> session.
+		 * @return A <code>A Boolean value indicating whether the destination accepts the session's pasteboard.</code>
 		 * 
 		 * @see UIDragging
 		 */

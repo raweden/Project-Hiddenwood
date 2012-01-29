@@ -1,11 +1,12 @@
-package se.raweden.ui.desktop
+package se.raweden.desktop
 {
+	import flash.events.EventDispatcher;
 	import flash.printing.PrintJob;
+	import flash.utils.ByteArray;
 	import flash.utils.IDataInput;
 	import flash.utils.IDataOutput;
 	
-	import se.raweden.ui.UIViewController;
-	import se.raweden.ui.managers.UIUndoManager;
+	import se.raweden.managers.UndoManager;
 	import se.raweden.utils.IExternalizable;
 	
 	/**
@@ -17,9 +18,10 @@ package se.raweden.ui.desktop
 	 * view presenting the document's data.</p>
 	 * 
 	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */	
-	public class UIDocument implements IExternalizable{
+	public class UIDocument extends EventDispatcher{
 		
 		//
 		// TODO: add a complete list of method and properties that should be overriden when subclassing UIDocument.
@@ -27,7 +29,7 @@ package se.raweden.ui.desktop
 		// TODO: develop a class that represents the reading and writting session of remote files.
 		//
 		
-		private var m_undoManager:UIUndoManager;
+		private var m_undoManager:UndoManager;
 		
 		public function UIDocument(){
 		
@@ -80,11 +82,11 @@ package se.raweden.ui.desktop
 		/**
 		 * Reads the Document from its binary source from a input stream.
 		 * 
-		 * @param input
+		 * @param input The <code>ByteArray</code> from which the the document can be readin.
 		 * @param type
 		 * @return A Boolean value indicating if the stream where accepted.
 		 */
-		public function readExternal(input:IDataInput,type:String):Boolean{
+		public function readExternal(input:ByteArray,type:String):Boolean{
 			
 			//
 			// In a feature release of the Flash Player you will be able to create a new thread to decode the file.
@@ -101,11 +103,11 @@ package se.raweden.ui.desktop
 		/**
 		 * Writes the documents binary represtentation to a output stream.
 		 * 
-		 * @param output The output interface for the document to write it's binary representation.
+		 * @param output The <code>ByteArray</code> for the document to write it's binary representation.
 		 * @param type The format of the output format, by default the file extention.
 		 * @return A Boolean value indicating if the document where successfully written to the stream.
 		 */
-		public function writeExternal(output:IDataOutput,type:String):Boolean{
+		public function writeExternal(output:ByteArray,type:String):Boolean{
 			
 			//
 			// In a feature release of the Flash Player you will be able to create a new thread to decode the file.
@@ -120,7 +122,7 @@ package se.raweden.ui.desktop
 		//------------------------------------
 				
 		/**
-		 * Indicates if the Document has undo management.
+		 * A <code>Boolean</code> value that determine whether the document has a undo management.
 		 */
 		public function get hasUndoManager():Boolean{
 			return m_undoManager != null;
@@ -131,11 +133,11 @@ package se.raweden.ui.desktop
 		 * 
 		 * @default <code>null</code>
 		 */		
-		public function set undoManager(value:UIUndoManager):void{
+		public function set undoManager(value:UndoManager):void{
 			m_undoManager = value;
 		}
 		// indicates the undo manager for this instance.
-		public function get undoManager():UIUndoManager{
+		public function get undoManager():UndoManager{
 			return m_undoManager;
 		}
 		
@@ -144,14 +146,15 @@ package se.raweden.ui.desktop
 		//------------------------------------
 		
 		/**
-		 * 
+		 * Indicates the current state of the document.
 		 */
 		public final function get documentState():String{
 			return null;
 		}
 		
 		/**
-		 * Indicates if the Document have been edited since it where last saved.
+		 * A <code>Boolean</code> value indicating whether the document have been edited since
+		 * it where last saved.
 		 * 
 		 * @default <code>false</code>
 		 */
@@ -164,14 +167,10 @@ package se.raweden.ui.desktop
 		//------------------------------------
 			
 		/**
-		 * Returns the Panel Controller associated with this document instance.
-		 * 
-		 * <p>When subclassing this method this method should be overriden.</p>
-		 * 
-		 * @default <code>null</code>
+		 * Called by external interfaces to present the document in the application's viewport.
 		 */
-		public function get viewController():UIViewController{
-			return null;
+		public function present():void{
+			
 		}
 		
 		//------------------------------------
@@ -188,9 +187,10 @@ package se.raweden.ui.desktop
 		}
 		
 		/**
-		 * Returns the printJob representing the document.
+		 * Returns the printJob representing the document, the default implementation of this 
+		 * method returns <code>null</code>.
 		 * 
-		 * @return The printJob to be printed by the system. The Default implementation returns <code>null</code>.
+		 * @return The <code>PrintJob</code> to be printed by the system.
 		 */
 		public function print():PrintJob{
 			// generate the print as the this method is invoked.
@@ -199,4 +199,3 @@ package se.raweden.ui.desktop
 		
 	}
 }
-

@@ -1,4 +1,4 @@
-﻿package se.raweden.ui.desktop
+﻿package se.raweden.desktop
 {
 	import flash.display.Bitmap;
 	import flash.display.InteractiveObject;
@@ -34,7 +34,7 @@
 		// TODO: implement onEnterFrame in instance to allow slideback while begining a new drag.
 		//
 				
-		private var m_pasteboard:UIPasteboard;
+		private var m_resource:UIPasteboard;
 		private var m_event:MouseEvent;
 		private var m_items:Array;
 		private var m_offset:Point;
@@ -56,8 +56,8 @@
 		 * @param	images
 		 * @param	operation
 		 */
-		public function UIDragging(pasteboard:UIPasteboard,images:Array,operation:int = 0){
-			m_pasteboard = pasteboard;
+		public function UIDragging(resource:UIPasteboard,images:Array,operation:int = 0){
+			m_resource = resource;
 			m_images = images;
 		}
 		
@@ -68,8 +68,8 @@
 		/**
 		 * A <code>UIPasteboard</code> representing the resource being dragged.
 		 */
-		public final function get pasteboard():UIPasteboard{
-			return m_pasteboard;
+		public final function get resource():UIPasteboard{
+			return m_resource;
 		}
 		
 		/**
@@ -168,7 +168,7 @@
 		}
 		
 		//------------------------------------
-		// Instance Based Respondint to User Interaction while Dragging.
+		// Instance Based implementation to Respond to User Interaction while dragging.
 		//------------------------------------
 				
 		private function onEnterFrame(e:Event):void{
@@ -365,8 +365,13 @@
 				}
 			}
 			// Sends the dragging pasteboard to valid destionation if found.
+			var event:UIDragEvent;
 			if(destination){
-				destination.dispatchEvent(new UIDragEvent(UIDragEvent.DRAG_DROP,m_session,m_session.m_location.clone()));
+				event = new UIDragEvent(UIDragEvent.DRAG_DROP,m_session,m_session.m_location.clone())
+				destination.dispatchEvent(event);
+			}
+			if(event && !event.isDefaultPrevented()){
+				
 				// TODO: determine whether session's enterframe should keep firing.
 				m_session.clear();
 			}else if(m_session.slideBack){
