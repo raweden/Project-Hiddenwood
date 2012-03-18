@@ -1,11 +1,3 @@
-//
-//	UIControl.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-29
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.view
 {
 	/**
@@ -15,6 +7,8 @@ package se.raweden.ui.view
 	 * @tag<p>You may notice that by default there is no hovering state for a control,
 	 * it's not all platforms supports hovering a hovering state and in a real world
 	 * methapore hovering would not apper.</p>
+	 * 
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
 	 * 
 	 * @author Raweden
 	 */
@@ -28,17 +22,17 @@ package se.raweden.ui.view
 		/**
 		 * Highlighted state of a control. A control enters this state when the user primarly interacts with the control.
 		 */
-		public static const Highlighted:int = 1 << 0;
+		public static const Highlighted:int = 1;
 		
 		/**
 		 * Disabled state of a control. This state indicates that the control is currently disabled.
 		 */
-		public static const Disabled:int = 1 << 1;
+		public static const Disabled:int = 2;
 		
 		/**
 		 * Selected state of a control. This state indicates that the controls is currently selected.
 		 */
-		public static const Selected:int = 1 << 2;
+		public static const Selected:int = 4;
 		
 	}
 }

@@ -14,7 +14,7 @@ package se.raweden.managers
 		private var undoStack:Array;
 		private var redoStack:Array;
 		
-		private var m_levels:int = 25;
+		private var _levels:int = 25;
 		
 		public function UndoManager(){
 			undoStack = new Array();
@@ -31,12 +31,12 @@ package se.raweden.managers
 		 * @default <code>25</code>
 		 */
 		public function set levels(value:int):void{
-			m_levels = value;
+			_levels = value;
 			trimStacks();
 		}
-		// returns the current level set.
+		// returns the value of the levels attribute.
 		public function get levels():int{
-			return m_levels;
+			return _levels;
 		}
 		
 		/**
@@ -123,9 +123,10 @@ package se.raweden.managers
 		public function redo():void{
 			if(this.canRedo){
 				var action:IOperation = redoStack.pop();
-				action.performRedo();
+				action.restore();
 			}
 		}
+		
 		
 		/**
 		 * Removes the next <code>IOperation</code> object from the undo stack
@@ -134,7 +135,7 @@ package se.raweden.managers
 		public function undo():void{
 			if(this.canUndo){
 				var action:IOperation = undoStack.pop();
-				action.performUndo();
+				action.restore();
 			}
 		}
 		
@@ -142,13 +143,15 @@ package se.raweden.managers
 		// UTILITY METHODS
 		//------------------------------------
 		
-		// Trims the length of both stacks if they are longer than what levels indicates
+		/**
+		 * Utility method to trim the undo and redo stack to the current lenght that levels indicates.
+		 */
 		private function trimStacks():void{
-			if(undoStack.length > m_levels){
-				undoStack.length = m_levels;
+			if(undoStack.length > _levels){
+				undoStack.length = _levels;
 			}
-			if(undoStack.length > m_levels){
-				undoStack.length = m_levels;
+			if(undoStack.length > _levels){
+				undoStack.length = _levels;
 			}
 		}
 		

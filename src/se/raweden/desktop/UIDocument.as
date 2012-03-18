@@ -29,7 +29,7 @@ package se.raweden.desktop
 		// TODO: develop a class that represents the reading and writting session of remote files.
 		//
 		
-		private var m_undoManager:UndoManager;
+		private var _undoManager:UndoManager;
 		
 		public function UIDocument(){
 		
@@ -125,7 +125,7 @@ package se.raweden.desktop
 		 * A <code>Boolean</code> value that determine whether the document has a undo management.
 		 */
 		public function get hasUndoManager():Boolean{
-			return m_undoManager != null;
+			return _undoManager != null;
 		}
 		
 		/**
@@ -134,11 +134,11 @@ package se.raweden.desktop
 		 * @default <code>null</code>
 		 */		
 		public function set undoManager(value:UndoManager):void{
-			m_undoManager = value;
+			_undoManager = value;
 		}
 		// indicates the undo manager for this instance.
 		public function get undoManager():UndoManager{
-			return m_undoManager;
+			return _undoManager;
 		}
 		
 		//------------------------------------

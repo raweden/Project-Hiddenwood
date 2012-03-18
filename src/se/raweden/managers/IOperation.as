@@ -1,6 +1,7 @@
 package se.raweden.managers
 {
 	/**
+	 * A Object that implements the <code>IOperation</code>
 	 * 
 	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
 	 * 
@@ -8,19 +9,21 @@ package se.raweden.managers
 	 */
 	public interface IOperation{
 		
-		//
-		// TODO: write documentation for this interface.
-		//
+		/**
+		 * 
+		 */
+		function get id():int;
 		
 		/**
 		 * 
 		 */
-		function performRedo():void;
+		function get name():String;
 		
 		/**
 		 * 
 		 */
-		function performUndo():void;
+		function restore():void;
+		
 		
 	}
 }

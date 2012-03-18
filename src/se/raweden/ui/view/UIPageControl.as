@@ -1,11 +1,3 @@
-//
-//	UIPageControl.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-01
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.view
 {
 	import flash.display.DisplayObjectContainer;
@@ -17,7 +9,8 @@ package se.raweden.ui.view
 	 * Each dot represents a page in the application's document (or other data-model entity),
 	 * with the white dot indicating the currently viewed page.</p>
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public class UIPageControl extends UIControl{
@@ -27,10 +20,10 @@ package se.raweden.ui.view
 		// TODO: provide a way to customize the colors and icons of the dots.
 		//
 		
-		private var m_currentPage:int;
-		private var m_numPages:int;
-		private var m_hideWhenSinglePage:Boolean;
-		private var m_defersCurrentPageDisplay:Boolean;
+		private var _currentPage:int;
+		private var _numPages:int;
+		private var _autoHide:Boolean;
+		private var _defersCurrentPageDisplay:Boolean;
 		
 		private var m_dots:Array = new Array();
 		
@@ -43,10 +36,10 @@ package se.raweden.ui.view
 		// Initilizes the page control.
 		private function init():void{
 			// setting the default values.
-			m_defersCurrentPageDisplay = false;
-			m_hideWhenSinglePage = false;
-			m_numPages = 0;
-			m_currentPage = -1;
+			_defersCurrentPageDisplay = false;
+			_autoHide = false;
+			_numPages = 0;
+			_currentPage = -1;
 			// setting the default size.
 			resize(320,20);
 		}
@@ -60,16 +53,16 @@ package se.raweden.ui.view
 		 * @default <code>-1</code>
 		 */
 		public function set currentPage(value:int):void{
-			if(value != m_currentPage){
-				m_currentPage = value;
-				if(m_defersCurrentPageDisplay){
+			if(value != _currentPage){
+				_currentPage = value;
+				if(_defersCurrentPageDisplay){
 					updateCurrentPageDisplay();
 				}
 			}
 		}
-		// indicates the current page.
+		// returns the value of the currentPage attribute.
 		public function get currentPage():int{
-			return m_currentPage;
+			return _currentPage;
 		}
 		
 		/**
@@ -77,53 +70,57 @@ package se.raweden.ui.view
 		 * @default <code>0</code>
 		 */
 		public function set numPages(value:int):void{
-			m_numPages = value;
-			if(value > 0 && hideWhenSinglePage && !this.visible){
+			_numPages = value;
+			if(value > 0 && autoHide && !this.visible){
 				this.visible = true;
 			}
 			updateCurrentPageDisplay();
 		}
-		// indicates the current page.
+		// returns the value of the numPages attribute.
 		public function get numPages():int{
-			return m_numPages;
+			return _numPages;
 		}
 		
 		/**
 		 * 
 		 * @default <code>false</code>
 		 */
-		public function set hideWhenSinglePage(value:Boolean):void{
-			m_hideWhenSinglePage = value;
-			if(m_numPages == 1){
+		public function set autoHide(value:Boolean):void{
+			_autoHide = value;
+			if(_numPages == 1){
 				this.visible = false;
 			}
 		}
-		// indicates the current page.
-		public function get hideWhenSinglePage():Boolean{
-			return m_hideWhenSinglePage;
+		// returns the value of the autoHide attribute.
+		public function get autoHide():Boolean{
+			return _autoHide;
 		}
 		
 		//------------------------------------
 		// Updating the Page Display
 		//------------------------------------
 		
+		/**
+		 * A <code>Boolean</code> value that determines whether the page indicator should be 
+		 * updated automatically when the <code>currentPage</code> attribute is changed.
+		 */
 		public function set defersCurrentPageDisplay(value:Boolean):void{
-			m_defersCurrentPageDisplay = value;
+			_defersCurrentPageDisplay = value;
 		}
-		// indicates if the Page Control should switch directly.
+		// returns the value of the defersCurrentPageDisplay attribute.
 		public function get defersCurrentPageDisplay():Boolean{
-			return m_defersCurrentPageDisplay;
+			return _defersCurrentPageDisplay;
 		}
 		
 		public function updateCurrentPageDisplay():void{
-			this.setNeedsDisplay();
+			needs("draw",draw);
 		}
 		
 		/**
 		 * @inheritDoc
 		 */
 		override protected function draw(rect:Rectangle):void{
-			var len:int = m_numPages;
+			var len:int = _numPages;
 			var dia:int = 10;
 			var spa:int = dia+4;
 			var width:Number = spa*len;
@@ -131,7 +128,7 @@ package se.raweden.ui.view
 			var y:int = Math.round((rect.height-dia)*0.5);
 			this.graphics.clear();
 			for(var i:int = 0;i<len;i++){
-				if(i == m_currentPage){
+				if(i == _currentPage){
 					this.graphics.beginFill(0x2D2D2D,0.4);	
 				}else{
 					this.graphics.beginFill(0xCCCCCC,0.4);

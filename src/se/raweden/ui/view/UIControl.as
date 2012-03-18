@@ -1,35 +1,20 @@
-//
-//	UIControl.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-01
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.view
 {
 	import flash.display.DisplayObjectContainer;
 	import flash.geom.Rectangle;
 	
-	import se.raweden.core.core;
-	
 	/**
 	 * A <code>UIControl</code> base class
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public class UIControl extends UIView{
-		
-		use namespace core;
-		
-		//
-		// TODO: write better documentation for this class.
-		//
-		
-		private var m_enabled:Boolean = true;
-		private var m_highlighted:Boolean;
-		private var m_selected:Boolean;
+			
+		private var _enabled:Boolean = true;
+		private var _highlighted:Boolean;
+		private var _selected:Boolean;
 		
 		/**
 		 * Constructor.
@@ -45,9 +30,9 @@ package se.raweden.ui.view
 		 */		
 		public function get state():int{
 			var state:int = UIControlState.Normal;
-			if (m_highlighted)	state |= UIControlState.Highlighted;
-			if (!m_enabled)		state |= UIControlState.Disabled;
-			if (m_selected)		state |= UIControlState.Selected;
+			if (_highlighted)	state |= UIControlState.Highlighted;
+			if (!_enabled)		state |= UIControlState.Disabled;
+			if (_selected)		state |= UIControlState.Selected;
 			return state;
 		}
 		
@@ -57,53 +42,53 @@ package se.raweden.ui.view
 		 * @default <code>true</code>
 		 */
 		public function set enabled(value:Boolean):void{
-			if(value != m_enabled){
+			if(value != _enabled){
 				mouseEnabled = mouseChildren = value;
 				tabEnabled = value;
 				alpha = value ? 1.0 : 0.75;	
-				m_enabled = value;
+				_enabled = value;
 				stateDidChange();
 			}
 		}
-		// indicates if the Controll is currently enabled.
+		// returns the current value of the enabled property.
 		public function get enabled():Boolean{
-			return m_enabled;
+			return _enabled;
 		}
 		
 		/**
 		 * A Boolean value that determien whether this <code>UIControl/code> instance is selected.
 		 */
 		public function set selected(value:Boolean):void{
-			if(value != m_selected){
-				m_selected = value;
+			if(value != _selected){
+				_selected = value;
 				stateDidChange();
 			}
 		}
-		//
+		// returns the current value of the selected property.
 		public function get selected():Boolean{
-			return m_selected;
+			return _selected;
 		}
 
 		/**
 		 * A Boolean value that determine whether this <code>UIControl/code> instance is highlighted.
 		 */
 		public function set highlighted(value:Boolean):void{
-			if(value != m_highlighted){
-				m_highlighted = value;	
+			if(value != _highlighted){
+				_highlighted = value;	
 				stateDidChange();
 			}
 		}
-		// returns of the control is currently highighted.
+		// returns the current value of the hightlighted property.
 		public function get highlighted():Boolean{
-			return m_highlighted;
+			return _highlighted;
 		}
 		
 		/**
 		 * This method is invoked internaly when the state changes.
 		 */
 		private function stateDidChange():void{
-			this.setNeedsDisplay();
-			this.setNeedsLayout();
+			this.needsDraw();
+			this.needsLayout();
 		}
 
 		

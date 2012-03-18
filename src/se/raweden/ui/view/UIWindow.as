@@ -10,6 +10,7 @@ package se.raweden.ui.view
 	 * A <code>UIWindow</code> manages and coordinate the window of an application displayed on the screen.
 	 * 
 	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public class UIWindow extends UIView{
@@ -21,8 +22,8 @@ package se.raweden.ui.view
 		// TODO: automaticly resize the window instances to stage when active (less boilerplate code).
 		//
 		
-		private var m_rootViewController:UIViewController;
-		private var m_focus:InteractiveObject;
+		private var _rootViewController:UIViewController;
+		private var _focus:InteractiveObject;
 		
 		/**
 		 * Constuctor
@@ -32,12 +33,8 @@ package se.raweden.ui.view
 		 */
 		public function UIWindow(rootViewController:UIViewController = null){
 			super();
-			m_rootViewController = rootViewController;
+			_rootViewController = rootViewController;
 			init();
-			// TODO: remove this line of code.
-			if(this == this.root){
-				trace("window is root");
-			}
 		}
 		
 		private function init():void{
@@ -52,11 +49,11 @@ package se.raweden.ui.view
 		 * Determine the view which have the current focus in this window.
 		 */
 		public function set focus(value:InteractiveObject):void{
-			m_focus = value;
+			_focus = value;
 		}
-		//
+		// returns the value of the focus attribute.
 		public function get focus():InteractiveObject{
-			return m_focus;
+			return _focus;
 		}
 		
 		//------------------------------------
@@ -67,12 +64,12 @@ package se.raweden.ui.view
 		 * 
 		 */
 		public function set rootViewController(value:UIViewController):void{
-			m_rootViewController = value;
+			_rootViewController = value;
 			// clear the view hieraki here.
 		}
-		
+		// returns the value of the rootViewController attribute.
 		public function get rootViewController():UIViewController{
-			return m_rootViewController;
+			return _rootViewController;
 		}
 		
 		//------------------------------------
@@ -82,27 +79,8 @@ package se.raweden.ui.view
 		// repsponds to user focus change.
 		private function onFocusEvent(e:FocusEvent):void{
 			if(e.type == FocusEvent.FOCUS_IN){
-				m_focus = e.target as InteractiveObject;
+				_focus = e.target as InteractiveObject;
 			}
-		}
-		
-		//------------------------------------
-		// Making Window Key.
-		//------------------------------------
-		
-		/**
-		 * A Boolean value that determine whether this <code>UIWindow</code> instance is the key window.
-		 */
-		public function get isKeyWindow():Boolean{
-			return UIApplication.sharedApplication.keyWindow == this;
-		}
-		
-		/**
-		 * Makes this <code>UIWindow</code> instance the key window.
-		 */
-		public function makeKeyWindow():void{
-			UIApplication.sharedApplication.keyWindow = this;
-			
 		}
 		
 		//------------------------------------
@@ -114,6 +92,8 @@ package se.raweden.ui.view
 		 */
 		override public function dispose():void{
 			this.removeEventListener(FocusEvent.FOCUS_IN,onFocusEvent);
+			_rootViewController = null;
+			_focus = null;
 			super.dispose();
 		}
 		

@@ -8,20 +8,17 @@
 	import flash.geom.Rectangle;
 	import flash.utils.Timer;
 	
-	import se.raweden.core.core;
-	
 	/**
 	 * A <code>UIActivityIndicator</code> view 
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */	
 	public class UIActivityIndicator extends UIView{
 		
-		use namespace core;
-		
 		//
-		// TODO: clean up this class, and alternativly add another apporach to the implementation.
+		// TODO: Clean up this class, alternativly use another approach with images.
 		//
 		
 		public static const STYLE_PINS:String = "pins";
@@ -34,6 +31,11 @@
 		private var _radius:uint;
 		
 		
+		/**
+		 * 
+		 * @param parent
+		 * @param style 
+		 */
 		public function UIActivityIndicator(parent:DisplayObjectContainer,style:String = "pins"){
 			super(parent);
 			if(style == "pins"){
@@ -60,12 +62,14 @@
 		
 		private function init():void{
 			resize(32,32);
-			this.invalidate("build");
+			needs("draw",draw);
+			needs("build",build);
 			render();
 		}
 		
-// // // // // // // // // // // // // 
-// EVENT METHODS
+		//------------------------------------
+		// Responding to Events.
+		//------------------------------------
 		
 		// when Preloader instace is added to stage
 		private function onAddedToStage(event:Event):void{
@@ -89,31 +93,37 @@
 			content.rotation = (content.rotation+(360/slices))%360;
 		}
 		
-// // // // // // // // // // // // // 
-// PARAMETERS METHODS
+		//------------------------------------
+		// Setting and Getting Attributes.
+		//------------------------------------
 		
-		// sets the number of slices in the spinner
+		/**
+		 * Specifies the number of slices in the spinner.
+		 */
 		public function set slices(value:uint):void{
 			_slices = value;
-			this.invalidate("build");
+			needs("build",build);
 		}
 		// returns the current number of slices
 		public function get slices():uint{
 			return(_slices);
 		}
 		
-		// sets the spinner's radius
+		/**
+		 * Specifies the radius of the indicator.
+		 */
 		public function set radius(value:uint):void{
 			_radius = value;
-			this.invalidate("build");
+			needs("build",build);
 		}
 		// returns the current radius
 		public function get radius():uint{
 			return(_radius);
 		}
 		
-// // // // // // // // // // // // // 
-// GENNERAL METHODS
+		//------------------------------------
+		// Playback controls.
+		//------------------------------------
 		
 		/**
 		 * Start the spinning of the preloader.
@@ -147,9 +157,10 @@
 			super.dispose();
 		}
 		
-// // // // // // // // // // // // // 
-// GRAPHICAl RENDER
-
+		//------------------------------------
+		// Graphical Render.
+		//------------------------------------
+		
 		/**
 		 * @inheritDoc
 		 */

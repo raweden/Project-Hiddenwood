@@ -1,11 +1,3 @@
-//
-//	UITextField.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-22
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.view
 {
 	import flash.display.DisplayObjectContainer;
@@ -17,17 +9,14 @@ package se.raweden.ui.view
 	import flash.text.TextFormat;
 	import flash.utils.Timer;
 	
-	import se.raweden.core.core;
-	
 	/**
 	 * A <code>UITextField</code>
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public class UITextField extends UIControl{
-		
-		use namespace core;
 		
 		//
 		// TODO: add iOS style implementation for customize the images.
@@ -37,16 +26,16 @@ package se.raweden.ui.view
 		public static const PLACE_HOLDER_COLOR:uint = 0x808080;
 		
 		// general properties.
-		private var m_font:String;
-		private var m_textFormat:TextFormat = new TextFormat();
-		private var m_text:String;
-		private var m_textColor:uint = 0x000000;
-		private var m_textAlign:String;
-		private var m_isSecure:Boolean;
-		private var m_placeHolder:String;
+		private var _font:String;
+		private var _textFormat:TextFormat = new TextFormat();
+		private var _text:String;
+		private var _textColor:uint = 0x000000;
+		private var _textAlign:String;
+		private var _secure:Boolean;
+		private var _placeHolder:String;
 		// configurating editing
-		private var m_editing:Boolean = false;
-		private var m_clearOnBeginEditing:Boolean = false;
+		private var _editing:Boolean = false;
+		private var _clearOnBeginEditing:Boolean = false;
 		
 		private var textField:TextField;
 		
@@ -56,6 +45,9 @@ package se.raweden.ui.view
 			init();
 		}
 		
+		/**
+		 * Creates and adds related view instances.
+		 */
 		private function addChildren():void{
 			textField = new TextField();
 			textField.type = "input";
@@ -66,6 +58,9 @@ package se.raweden.ui.view
 			this.addChild(textField);
 		}
 		
+		/**
+		 * Instance Initilization.
+		 */
 		private function init():void{
 			// setting the default size.
 			resize(320,24);
@@ -78,7 +73,7 @@ package se.raweden.ui.view
 		private var delay:Timer;
 
 		protected function onTextInput(e:TextEvent):void{
-			if(m_isSecure){
+			if(_secure){
 				if(!delay){
 					delay = new Timer(500);
 					delay.addEventListener(TimerEvent.TIMER,onTimerComplete);
@@ -98,23 +93,23 @@ package se.raweden.ui.view
 			switch(e.type){
 				case FocusEvent.FOCUS_IN : {
 					// clears the text if the behavior is specified.
-					if(m_clearOnBeginEditing || textField.text == m_placeHolder){
+					if(_clearOnBeginEditing || textField.text == _placeHolder){
 						textField.text = "";
-						textField.textColor = m_textColor;
+						textField.textColor = _textColor;
 					}
 					// traces the state.
 					trace(this,"focus in");
-					m_editing = true;
+					_editing = true;
 				}break;
 				case FocusEvent.FOCUS_OUT : {
 					// reverting to placeholder if empty.
 					if(textField.text == ""){
-						textField.text = m_placeHolder;
+						textField.text = _placeHolder;
 						textField.textColor = PLACE_HOLDER_COLOR;
 					}
 					// traces the state.
 					trace(this,"focus out");
-					m_editing = false;
+					_editing = false;
 				}
 			}
 		}
@@ -126,13 +121,13 @@ package se.raweden.ui.view
 		/**
 		 * 
 		 */
-		public function set isSecure(value:Boolean):void{
-			m_isSecure = value;
-			//textField.displayAsPassword = value;
+		public function set secure(value:Boolean):void{
+			//_secure = value;
+			textField.displayAsPassword = value;
 		}
-		
-		public function get isSecure():Boolean{
-			return m_isSecure;
+		// returns the value of the secure attribute.
+		public function get secure():Boolean{
+			return textField.displayAsPassword;
 		}
 		
 		/**
@@ -141,15 +136,15 @@ package se.raweden.ui.view
 		 * @default <code>null</code>
 		 */
 		public function set placeHolder(value:String):void{
-			m_placeHolder = value;
-			if(textField.text == "" && !m_editing){
+			_placeHolder = value;
+			if(textField.text == "" && !_editing){
 				textField.text = value;
 				textField.textColor = PLACE_HOLDER_COLOR;
 			}
 		}
-		
+		// returns the value of the placeHolder attribute.
 		public function get placeHolder():String{
-			return m_placeHolder;
+			return _placeHolder;
 		}
 		
 		/**
@@ -157,10 +152,10 @@ package se.raweden.ui.view
 		 */
 		public function set text(value:String):void{
 			textField.text = value;
-			this.setNeedsDisplay();
-			this.setNeedsLayout();
+			needs("layout",layout);
+			needs("draw",draw);
 		}
-		//
+		// returns the value of the text attribute.
 		public function get text():String{
 			return textField.text;
 		}
@@ -170,57 +165,57 @@ package se.raweden.ui.view
 		 */
 		public function set textAlign(value:String):void{
 			value = value == "right" || value == "center" ? value : "left";
-			m_textFormat.align = m_textAlign = value;
-			textField.setTextFormat(m_textFormat);
+			_textFormat.align = _textAlign = value;
+			textField.setTextFormat(_textFormat);
 		}
-		//
+		// returns the value of the textAlign attribute.
 		public function get textAlign():String{
-			return m_textAlign;
+			return _textAlign;
 		}
 
 		/**
 		 * 
 		 */
 		public function set textColor(value:uint):void{
-			m_textColor = value;
-			if(textField.text != m_placeHolder){
+			_textColor = value;
+			if(textField.text != _placeHolder){
 				textField.textColor = value;
 			}
 		}
-		//
+		// returns the value of the textColor attribute.
 		public function get textColor():uint{
-			return m_textColor;
+			return _textColor;
 		}
 
 		/**
 		 * 
 		 */
 		public function set font(value:String):void{
-			m_font = value;
-			m_textFormat.font = value;
-			textField.setTextFormat(m_textFormat);
+			_font = value;
+			_textFormat.font = value;
+			textField.setTextFormat(_textFormat);
 		}
-		//
+		// returns the value of the font attribute.
 		public function get font():String{
-			return m_font;
+			return _font;
 		}
 
 		/**
 		 * 
 		 */
 		public function get editing():Boolean{
-			return m_editing;
+			return _editing;
 		}
 
 		/**
 		 * 
 		 */
 		public function set clearOnBeginEditing(value:Boolean):void{
-			m_clearOnBeginEditing = value;
+			_clearOnBeginEditing = value;
 		}
-		//
+		// returns the value of the clearOnBeginEditing attribute.
 		public function get clearOnBeginEditing():Boolean{
-			return m_clearOnBeginEditing;
+			return _clearOnBeginEditing;
 		}
 		
 		//------------------------------------

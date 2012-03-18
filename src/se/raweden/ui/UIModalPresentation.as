@@ -1,5 +1,13 @@
 package se.raweden.ui
 {
+	/**
+	 * The <code>UIModalPresentation</code> contains contants to be
+	 * used with the UIViewController's <code>modalPresentation</code> property.
+	 * 
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
+	 * @author Raweden.
+	 */
 	public class UIModalPresentation{
 		
 		/**

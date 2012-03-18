@@ -1,21 +1,15 @@
-//
-//	ILocalController.as
-//	Core UI Framework
-//
-//	Created by Raweden on 2011-07-31
-//	Copyright 2011 Raweden. Some rights reserved.
-//
-
 package se.raweden.ui.utils
 {
 	import flash.events.Event;
 	
-	import se.raweden.ui.desktop.UIPasteboard;
+	import se.raweden.desktop.UIPasteboard;
 
 	/**
-	 * The <code>ILocalController</code> is a abstract interface expodes to other application via the <code>UIWorspace</code> for application management.
+	 * The <code>ILocalController</code> is a abstract interface expodes to other application
+	 * via the <code>UIWorkspace</code> for application management.
 	 * 
-	 * @copyright Copyright 2011 Raweden. All rights reserved.
+	 * <p>Copyright 2011 Raweden. All rights reserved.</p>
+	 * 
 	 * @author Raweden
 	 */
 	public interface ILocalController{
@@ -26,7 +20,7 @@ package se.raweden.ui.utils
 		function get caption():String;
 		
 		/**
-		 * A <code>Boolean</code> value determine whether the application or plugin is currently running.
+		 * A <code>Boolean</code> value that determine whether the plugin is currently running.
 		 */
 		function get isRunning():Boolean;
 			
@@ -34,16 +28,24 @@ package se.raweden.ui.utils
 		 * A <code>String</code> that specifies the application's or plugin's uniqe identifier.
 		 */
 		function get identifier():String;
-			
-		/**
-		 * Invokes the open method on the principal class for the application or plugin.
-		 */
-		function open(pasteboard:UIPasteboard):void;
 		
 		/**
-		 * validates the the application or plugin can use the pasteboard.
+		 * 
 		 */
-		function canOpen(pasteboard:UIPasteboard):Boolean;
+		function get types():Array;
+			
+		/**
+		 * Invokes the <code>open()</code> method on the principal class for the application or plugin.
+		 */
+		function open(resource:UIPasteboard):void;
+		
+		/**
+		 * Determine whether the plugin can interact with one or more types in the resource.
+		 * 
+		 * @return A <code>Boolean</code> value that determine whether the plugin can interact
+		 * with the resource.
+		 */
+		function canOpen(resource:UIPasteboard):Boolean;
 		
 		/**
 		 * Dispatches a <code>Event</code> on the application's main <code>EventDispatcher</code>;
