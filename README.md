@@ -11,9 +11,9 @@ The library is written in pure ActionScript 3.0 against the Flash 10.1 runtime.
 * No Dependencies, the library stands on it's own legs.
 * More.. more.. So much that there is no way to writting them here.
 
-### Notes
+### Developers Notes.
 
-The deveopement of Project Hiddenwood have currently been put on ice, and the project is beta shape. which means that there is alot more to be done to complete it.
+The development of "Project Hiddenwood" have currently been put on ice, the project current state could be described as pre-alpha, which means that some bugs and even missing features exists. However due to the unstable future of the flash platform I have chosen to not investment the time to complete this project. 
 
 ## Hiddenwood Highlights 
 
