@@ -30,7 +30,7 @@ The `Project Hiddenwood` provides classes for developing document based applicat
 The `UIScriptView` class is the Project Hiddenwood's equivalent of the code editor found inside the WordPress platform. UIScriptEditor supports tab formatting and more features to come, like syntax highlighting API and code snippet injection.
 
 ### Card-based Navigation
-The `UIPagingView` is a card-based navigation view, the component dynamically renders the page cells, much like the `UITableView` those cells can be refused for minimal memory usage. This component is based on [Core UI](https://github.com/raweden/Core-UI/) framework and is currently in a experimental stage.
+The `UIPagingView` is a card-based navigation view, the component dynamically renders the page cells, much like the `UITableView` those cells can be reused for minimal memory usage. This component is currently in a experimental stage.
 
 ### Video Kit
 The `UIVideoView` is a MVC based video component that will integrate with Youtube and regular streaming but also support custom Flash Media Server integration without a major code base change.
