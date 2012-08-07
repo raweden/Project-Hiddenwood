@@ -4,16 +4,14 @@ Project Hiddenwood where developed as the User Interface and and is the kit behi
 
 The library is written in pure ActionScript 3.0 against the Flash 10.1 runtime.
 
+**Note: Further development of this project have been abandoned.** This due to instable future of the flash player as a platform.
+
 ### Features
 
 * Contains wrappers (`WebStorage`, `WebFile` and `User`) for some commands in the [collab (php)]() backend.
 * Resource Management, with a uniform type lookup and a internal clipboard class `UIPasteboard`.
 * No Dependencies, the library stands on it's own legs.
 * More.. more.. So much that there is no way to writting them here.
-
-### Developers Notes.
-
-The development of "Project Hiddenwood" have currently been put on ice, the project current state could be described as pre-alpha, which means that some bugs and even missing features exists. However due to the unstable future of the flash platform I have chosen to not investment the time to complete this project. 
 
 ## Hiddenwood Highlights 
 
